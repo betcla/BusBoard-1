@@ -10,40 +10,25 @@ using RestSharp.Authenticators;
 
 namespace BusBoard.ConsoleApp
 {
-    class BusStop : IComparable
-    {
-        public string destinationName;
-        public string lineId;
-        public string expectedArrival;
-        public int CompareTo(object comparePart)
-        {
-            if (comparePart == null) return 1;
-
-            BusStop otherBusStop = comparePart as BusStop;
-            if (otherBusStop != null)
-                return this.expectedArrival.CompareTo(otherBusStop.expectedArrival);
-            else
-                throw new ArgumentException("Object is not a BusStop");
-        }
-    }
-
     class Program
     {
         static void Main(string[] args)
         {
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            var stopCode = "490008660N";
+            var postcode = "NW51TL";
+            Console.WriteLine("Welcome, please enter a stopcode (Hint: choose 490008660N)");
+            //var stopCode = Console.ReadLine();
+            
+            Console.WriteLine(APIReader.GetLocation(APICaller.GetLongLatFromPostcode(postcode)).latitude);
+            
+            var response = APICaller.GetBusesFromBusCode(stopCode);
 
-            var client = new RestClient("https://api.tfl.gov.uk");
-
-            var request = new RestRequest("StopPoint/Mode/bus/Disruption", DataFormat.Json);
-            request.AddParameter("app_id", "7d0152bc");
-            request.AddParameter("app_key", "9c228e7ec36f4500b944f2d79bf9d16f");
-
-            var response = client.Get(request);
-
-            var busStopList = JsonConvert.DeserializeObject<List<BusStop>>(response.Content);
-
-            busStopList.Sort();
+            var few = 5;
+            var firstFewStops = APIReader.GetFirstFewStops(response, few);
+            foreach (var stop in firstFewStops)
+            {
+                Console.WriteLine(stop);
+            }
         }
     }
 }
