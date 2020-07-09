@@ -10,7 +10,7 @@ namespace BusBoard.ConsoleApp
         public static IEnumerable<BusStop> GetFirstFewStops(IRestResponse response, int few)
         {
             var busStopList = JsonConvert.DeserializeObject<List<BusStop>>(response.Content);
-            busStopList.Sort();
+            busStopList.Sort((x,y) => x.expectedArrival.CompareTo(y.expectedArrival));
             var firstFewStops = busStopList.Take(few);
             return firstFewStops;
         }

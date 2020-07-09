@@ -11,10 +11,11 @@ namespace BusBoard.ConsoleApp
 
             var client = new RestClient("https://api.tfl.gov.uk");
 
-            var request = new RestRequest($"StopPoint/{stopCode}/Arrivals", DataFormat.Json);
+            var request = new RestRequest("StopPoint/{stopCode}/Arrivals", DataFormat.Json);
             request.AddParameter("app_id", "7d0152bc");
             request.AddParameter("app_key", "9c228e7ec36f4500b944f2d79bf9d16f");
-
+            request.AddUrlSegment("stopCode", stopCode);
+            
             var response = client.Get(request);
             return response;
         }
