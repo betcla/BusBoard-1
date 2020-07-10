@@ -54,7 +54,7 @@
   <ItemGroup>
     <Compile Include="TFLAPICaller.cs" />
     <Compile Include="TFLAPIReader.cs" />
-    <Compile Include="BusStop.cs" />
+    <Compile Include="BusArrival.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

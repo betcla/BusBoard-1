@@ -8,17 +8,9 @@ namespace BusBoard.ConsoleApp
     {
         public string latitude { get; set; }
         public string longitude { get; set; }
-
-        public Location(string latitude, string longitude)
-        {
-            this.latitude = latitude;
-            this.longitude = longitude;
-        }
-
-        public Location() { }
     }
 
-    public class DummyLocation
+    public class PostcodesResponses
     {
         public Location result { get; set; }
 

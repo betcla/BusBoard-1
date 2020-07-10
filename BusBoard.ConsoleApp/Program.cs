@@ -24,7 +24,7 @@ namespace BusBoard.ConsoleApp
             var loc = PostcodesAPIReader.GetLocation(PostcodesAPICaller.GetLongLatFromPostcode(postcode));
             Console.WriteLine(loc.latitude);
             
-            var response = TFLAPICaller.GetBusesFromBusCode(stopCode);
+            var response = TFLAPICaller.GetBusesFromStopCode(stopCode);
 
             var few = 5;
             var firstFewStops = TFLAPIReader.GetFirstFewStops(response, few);

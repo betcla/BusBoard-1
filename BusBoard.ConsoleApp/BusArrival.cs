@@ -2,7 +2,7 @@
 
 namespace BusBoard.ConsoleApp
 {
-    class BusStop
+    class BusArrival
     {
         public string destinationName;
         public string lineId;
@@ -12,5 +12,16 @@ namespace BusBoard.ConsoleApp
         {
             return $"Line: {lineId}\nTo: {destinationName}\nArriving at: {expectedArrival}";
         }
+    }
+
+    public class StopCode
+    {
+        public string naptanID { get; set; }
+        public string distance { get; set; }
+    }
+
+    public class StopCodeResponses
+    {
+        public StopCode stopPoints { get; set; }
     }
 }
