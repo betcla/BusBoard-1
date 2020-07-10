@@ -12,7 +12,7 @@ namespace BusBoard.ConsoleApp
         {
             var a = JsonConvert.DeserializeObject<DummyLocation>(response.Content).result;
             
-            return new Location((string)a["latitude"], (string)a["longitude"]);  //new Location("", ""); /*a.latitude, a.longitude);*/
+            return a;  //new Location("", ""); /*a.latitude, a.longitude);*/
         }
     }
 

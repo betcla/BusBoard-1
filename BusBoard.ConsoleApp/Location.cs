@@ -6,8 +6,8 @@ namespace BusBoard.ConsoleApp
 {
     public class Location
     {
-        public string latitude { get; }
-        public string longitude { get; }
+        public string latitude { get; set; }
+        public string longitude { get; set; }
 
         public Location(string latitude, string longitude)
         {
@@ -20,11 +20,7 @@ namespace BusBoard.ConsoleApp
 
     public class DummyLocation
     {
-        public Dictionary<string, string> result { get; }
+        public Location result { get; set; }
 
-        public DummyLocation(Dictionary<string, string> result)
-        {
-            this.result = result;
-        }
     }
 }
