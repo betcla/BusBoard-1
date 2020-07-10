@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace BusBoard.ConsoleApp
 {
@@ -22,6 +23,6 @@ namespace BusBoard.ConsoleApp
 
     public class StopCodeResponses
     {
-        public StopCode stopPoints { get; set; }
+        public List<StopCode> stopPoints { get; set; }
     }
 }
