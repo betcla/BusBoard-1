@@ -18,9 +18,9 @@ namespace BusBoard.ConsoleApp
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             
             //var stopCode = "490008660N";
-            var postcode = "NW51TL";
-            //Console.WriteLine("Welcome, please enter a stopcode (Hint: choose 490008660N)");
-            //var stopCode = Console.ReadLine();
+            //var postcode = "NW51TL";
+            Console.WriteLine("Welcome, please enter a postcode (Hint: choose NW51TL)");
+            var postcode = Console.ReadLine();
             
             
             var tflReader = new TFLAPIReader();
@@ -29,17 +29,20 @@ namespace BusBoard.ConsoleApp
             var postcodesCaller = new PostcodesAPICaller();
             
             var loc = postcodesReader.GetLocation(postcodesCaller.GetLongLatFromPostcode(postcode));
-            //Console.WriteLine(loc.latitude);
 
-            var stopCode = tflReader.GetFirstFewStopCodes(tflCaller.GetStopCodeFromLocation(loc), 1);
+            var stopCodes = tflReader.GetFirstFewStopCodes(tflCaller.GetStopCodeFromLocation(loc), 2);
 
-            var response = tflCaller.GetBusesFromStopCode(stopCode.First().naptanID);
-
-            var few = 5;
-            var firstFewStops = tflReader.GetFirstFewStops(response, few);
-            foreach (var stop in firstFewStops)
+            foreach (var stopCode in stopCodes)
             {
-                Console.WriteLine(stop);
+                var response = tflCaller.GetBusesFromStopCode(stopCode.naptanID);
+                
+                var few = 5;
+                var firstFewStops = tflReader.GetFirstFewStops(response, few);
+                Console.WriteLine($"Next 5 buses at stop {stopCode.commonName}:");
+                foreach (var stop in firstFewStops)
+                {
+                    Console.WriteLine(stop);
+                }
             }
         }
     }

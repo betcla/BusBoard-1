@@ -19,6 +19,7 @@ namespace BusBoard.ConsoleApp
     {
         public string naptanID { get; set; }
         public string distance { get; set; }
+        public string commonName { get; set; }
     }
 
     public class StopCodeResponses
