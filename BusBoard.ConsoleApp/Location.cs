@@ -1,4 +1,6 @@
-﻿using System.Linq.Expressions;
+﻿using System.Collections.Generic;
+using System.Linq.Expressions;
+using System.Web.UI;
 
 namespace BusBoard.ConsoleApp
 {
@@ -11,6 +13,18 @@ namespace BusBoard.ConsoleApp
         {
             this.latitude = latitude;
             this.longitude = longitude;
+        }
+
+        public Location() { }
+    }
+
+    public class DummyLocation
+    {
+        public Dictionary<string, string> result { get; }
+
+        public DummyLocation(Dictionary<string, string> result)
+        {
+            this.result = result;
         }
     }
 }

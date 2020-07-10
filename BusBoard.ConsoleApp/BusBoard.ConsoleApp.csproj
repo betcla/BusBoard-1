@@ -52,8 +52,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="APICaller.cs" />
-    <Compile Include="APIReader.cs" />
+    <Compile Include="TFLAPICaller.cs" />
+    <Compile Include="TFLAPIReader.cs" />
     <Compile Include="BusStop.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="Program.cs" />

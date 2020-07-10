@@ -14,17 +14,20 @@ namespace BusBoard.ConsoleApp
     {
         static void Main(string[] args)
         {
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            
             var stopCode = "490008660N";
             var postcode = "NW51TL";
             Console.WriteLine("Welcome, please enter a stopcode (Hint: choose 490008660N)");
             //var stopCode = Console.ReadLine();
+
+            var loc = PostcodesAPIReader.GetLocation(PostcodesAPICaller.GetLongLatFromPostcode(postcode));
+            Console.WriteLine(loc.latitude);
             
-            Console.WriteLine(APIReader.GetLocation(APICaller.GetLongLatFromPostcode(postcode)).latitude);
-            
-            var response = APICaller.GetBusesFromBusCode(stopCode);
+            var response = TFLAPICaller.GetBusesFromBusCode(stopCode);
 
             var few = 5;
-            var firstFewStops = APIReader.GetFirstFewStops(response, few);
+            var firstFewStops = TFLAPIReader.GetFirstFewStops(response, few);
             foreach (var stop in firstFewStops)
             {
                 Console.WriteLine(stop);
