@@ -7,8 +7,14 @@
 
 <div class="row">
     <p> You entered postcode @Model.PostCode</p>
-    <h4>test</h4>
+    @foreach (var stop in Model.Stops)
+    {
+        <h4>@stop.commonName</h4>
+        <p>Distance from postcode : @stop.distance</p>
+        foreach (var arrival in stop.Arrivals)
+        {
+            <p>@arrival.expectedArrival - Line @arrival.lineId to @arrival.destinationName</p>
+        }
+    }
 </div>
-
-<h4>testing 123</h4>
 
