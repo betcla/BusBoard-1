@@ -30,7 +30,7 @@ namespace BusBoard.ConsoleApp
             
             var loc = postcodesReader.GetLocation(postcodesCaller.GetLocationFromPostcode(postcode));
 
-            var stopCodes = tflReader.GetFirstFewStopCodes(tflCaller.GetStopCodeFromLocation(loc), 2);
+            var stopCodes = tflReader.GetFirstFewStopCodes(tflCaller.GetStopCodeFromLocation(loc)).Take(2);
 
             foreach (var stopCode in stopCodes)
             {

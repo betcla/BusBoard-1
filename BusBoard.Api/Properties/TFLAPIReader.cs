@@ -15,11 +15,11 @@ namespace BusBoard.Api
             return firstFewStops;
         }
         
-        public IEnumerable<BusStop> GetFirstFewStopCodes(IRestResponse response, int few)
+        public IEnumerable<BusStop> GetFirstFewStopCodes(IRestResponse response)
         {
             var stopCodeList = JsonConvert.DeserializeObject<StopCodeResponses>(response.Content);
             stopCodeList.stopPoints.Sort((x, y) => x.distance.CompareTo(y.distance));
-            var firstFewStops = stopCodeList.stopPoints.Take(few);
+            var firstFewStops = stopCodeList.stopPoints;
             return firstFewStops;
         }
     }

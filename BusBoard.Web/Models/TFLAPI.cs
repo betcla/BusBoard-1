@@ -7,9 +7,8 @@ namespace BusBoard.Web.Models
     {
         private TFLAPICaller Caller { get; set; } = new TFLAPICaller();
         private TFLAPIReader Reader { get; set; } = new TFLAPIReader();
-        
         public IEnumerable<BusStop> GetLocation(Location loc) {
-            return Reader.GetFirstFewStopCodes(Caller.GetStopCodeFromLocation(loc), 2);
+            return Reader.GetFirstFewStopCodes(Caller.GetStopCodeFromLocation(loc));
         }
     }
 }
