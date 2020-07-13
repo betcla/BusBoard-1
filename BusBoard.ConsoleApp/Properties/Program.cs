@@ -5,6 +5,7 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using BusBoard.Api;
 using Newtonsoft.Json;
 using RestSharp;
 using RestSharp.Authenticators;
@@ -21,7 +22,6 @@ namespace BusBoard.ConsoleApp
             //var postcode = "NW51TL";
             Console.WriteLine("Welcome, please enter a postcode (Hint: choose NW51TL)");
             var postcode = Console.ReadLine();
-            
             
             var tflReader = new TFLAPIReader();
             var postcodesReader = new PostcodesAPIReader();

@@ -2,7 +2,7 @@
 using System.Linq.Expressions;
 using System.Web.UI;
 
-namespace BusBoard.ConsoleApp
+namespace BusBoard.Api
 {
     public class Location
     {

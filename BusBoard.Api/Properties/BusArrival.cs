@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BusBoard.ConsoleApp
+namespace BusBoard.Api
 {
-    class BusArrival
+    public class BusArrival
     {
         public string destinationName;
         public string lineId;
