@@ -7,15 +7,15 @@ namespace BusBoard.Api
 {
     public class TFLAPIReader
     {
-        public IEnumerable<BusArrival> GetFirstFewStops(IRestResponse response, int few)
+        public List<BusArrival> GetArrivals(IRestResponse response)
         {
             var busStopList = JsonConvert.DeserializeObject<List<BusArrival>>(response.Content);
             busStopList.Sort((x,y) => x.expectedArrival.CompareTo(y.expectedArrival));
-            var firstFewStops = busStopList.Take(few);
+            var firstFewStops = busStopList;
             return firstFewStops;
         }
         
-        public IEnumerable<BusStop> GetFirstFewStopCodes(IRestResponse response)
+        public List<BusStop> GetStops(IRestResponse response)
         {
             var stopCodeList = JsonConvert.DeserializeObject<StopCodeResponses>(response.Content);
             stopCodeList.stopPoints.Sort((x, y) => x.distance.CompareTo(y.distance));

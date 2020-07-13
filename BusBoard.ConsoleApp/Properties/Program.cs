@@ -30,18 +30,16 @@ namespace BusBoard.ConsoleApp
             
             var loc = postcodesReader.GetLocation(postcodesCaller.GetLocationFromPostcode(postcode));
 
-            var stopCodes = tflReader.GetFirstFewStopCodes(tflCaller.GetStopCodeFromLocation(loc)).Take(2);
-
-            foreach (var stopCode in stopCodes)
+            var stops = tflReader.GetStops(tflCaller.GetStopCodeFromLocation(loc));
+            foreach (var stop in stops.Take(2))
             {
-                var response = tflCaller.GetBusesFromStopCode(stopCode.naptanID);
+                var response = tflCaller.GetBusesFromStopCode(stop.naptanID);
                 
-                var few = 5;
-                var firstFewStops = tflReader.GetFirstFewStops(response, few);
-                Console.WriteLine($"Next 5 buses at stop {stopCode.commonName}:");
-                foreach (var stop in firstFewStops)
+                stop.Arrivals = tflReader.GetArrivals(response);
+                Console.WriteLine($"Next 5 buses at stop {stop.commonName}:");
+                foreach (var bus in stop.Arrivals.Take(5))
                 {
-                    Console.WriteLine(stop);
+                    Console.WriteLine(bus);
                 }
             }
         }

@@ -156,6 +156,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\PostcodesAPI.cs" />
     <Compile Include="Models\PostcodeSelection.cs" />
     <Compile Include="Models\TFLAPI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
