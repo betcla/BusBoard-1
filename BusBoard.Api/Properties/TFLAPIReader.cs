@@ -1,22 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using BusBoard.ConsoleApp;
 using Newtonsoft.Json;
 using RestSharp;
 
-namespace BusBoard.ConsoleApp
+namespace BusBoard.Api
 {
-    class PostcodesAPIReader
-    {
-        public Location GetLocation(IRestResponse response)
-        {
-            var location = JsonConvert.DeserializeObject<PostcodesResponses>(response.Content).result;
-            
-            return location;
-        }
-    }
-
-    class TFLAPIReader
+    public class TFLAPIReader
     {
         public IEnumerable<BusArrival> GetFirstFewStops(IRestResponse response, int few)
         {
