@@ -1,21 +1,9 @@
 ﻿using System.Net;
 using RestSharp;
 
-namespace BusBoard.ConsoleApp
+namespace BusBoard.Api
 {
-    class PostcodesAPICaller
-    {
-        private RestClient Client = new RestClient("https://api.postcodes.io");
-        public IRestResponse GetLongLatFromPostcode(string postcode)
-        {
-            var request = new RestRequest("postcodes/{postcode}", DataFormat.Json);
-            request.AddUrlSegment("postcode", postcode);
-            var response = Client.Get(request);
-            return response;
-        }
-    }
-
-    class TFLAPICaller
+    public class TFLAPICaller
     {
         private RestClient Client = new RestClient("https://api.tfl.gov.uk");
         public IRestResponse GetBusesFromStopCode(string stopCode)
