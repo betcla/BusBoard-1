@@ -15,7 +15,7 @@ namespace BusBoard.Api
         }
     }
 
-    public class StopCode
+    public class BusStop
     {
         public string naptanID { get; set; }
         public string distance { get; set; }
@@ -24,6 +24,6 @@ namespace BusBoard.Api
 
     public class StopCodeResponses
     {
-        public List<StopCode> stopPoints { get; set; }
+        public List<BusStop> stopPoints { get; set; }
     }
 }

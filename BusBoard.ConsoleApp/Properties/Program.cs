@@ -28,7 +28,7 @@ namespace BusBoard.ConsoleApp
             var tflCaller = new TFLAPICaller();
             var postcodesCaller = new PostcodesAPICaller();
             
-            var loc = postcodesReader.GetLocation(postcodesCaller.GetLongLatFromPostcode(postcode));
+            var loc = postcodesReader.GetLocation(postcodesCaller.GetLocationFromPostcode(postcode));
 
             var stopCodes = tflReader.GetFirstFewStopCodes(tflCaller.GetStopCodeFromLocation(loc), 2);
 
