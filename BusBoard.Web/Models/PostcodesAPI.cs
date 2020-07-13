@@ -7,7 +7,6 @@ namespace BusBoard.Web.Models
     {
         private PostcodesAPICaller Caller { get; set; } = new PostcodesAPICaller();
         private PostcodesAPIReader Reader { get; set; } = new PostcodesAPIReader();
-
         public Location GetLocation(string postcode)
         {
             return Reader.GetLocation(Caller.GetLocationFromPostcode(postcode));

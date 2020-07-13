@@ -18,7 +18,14 @@ namespace BusBoard.Web.Controllers
       // Add some properties to the BusInfo view model with the data you want to render on the page.
       // Write code here to populate the view model with info from the APIs.
       // Then modify the view (in Views/Home/BusInfo.cshtml) to render upcoming buses.
-      var info = new BusInfo(selection.Postcode);
+      
+      var tflAPI = new TFLAPI();
+      var postcodesAPI = new PostcodesAPI();
+
+      var loc = postcodesAPI.GetLocation(selection.Postcode);
+      var stops = tflAPI.GetStops(loc);
+
+      var info = new BusInfo(stops, selection.Postcode);
       return View(info);
     }
 

@@ -11,16 +11,14 @@ namespace BusBoard.Api
         {
             var busStopList = JsonConvert.DeserializeObject<List<BusArrival>>(response.Content);
             busStopList.Sort((x,y) => x.expectedArrival.CompareTo(y.expectedArrival));
-            var firstFewStops = busStopList;
-            return firstFewStops;
+            return busStopList;
         }
         
         public List<BusStop> GetStops(IRestResponse response)
         {
             var stopCodeList = JsonConvert.DeserializeObject<StopCodeResponses>(response.Content);
             stopCodeList.stopPoints.Sort((x, y) => x.distance.CompareTo(y.distance));
-            var firstFewStops = stopCodeList.stopPoints;
-            return firstFewStops;
+            return stopCodeList.stopPoints;
         }
     }
 }
