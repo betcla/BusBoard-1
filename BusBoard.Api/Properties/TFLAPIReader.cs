@@ -15,7 +15,7 @@ namespace BusBoard.Api
             return firstFewStops;
         }
         
-        public IEnumerable<StopCode> GetFirstFewStopCodes(IRestResponse response, int few)
+        public IEnumerable<BusStop> GetFirstFewStopCodes(IRestResponse response, int few)
         {
             var stopCodeList = JsonConvert.DeserializeObject<StopCodeResponses>(response.Content);
             stopCodeList.stopPoints.Sort((x, y) => x.distance.CompareTo(y.distance));
